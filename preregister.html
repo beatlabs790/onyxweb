@@ -287,7 +287,10 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
   <script src="config.js"></script>
+  <script src="db.js"></script>
   <script src="main.js"></script>
   <script>
     // Canvas Confetti Effect
@@ -355,7 +358,7 @@
     }
 
     // Form Submission & Webhook broadcast
-    document.getElementById('pre-reg-form').addEventListener('submit', function(e) {
+    document.getElementById('pre-reg-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const name = document.getElementById('reg-name').value;
@@ -365,9 +368,8 @@
       const discord = document.getElementById('reg-discord').value;
       const reason = document.getElementById('reg-reason').value;
 
-      // 1. Save Locally
-      const registrants = JSON.parse(localStorage.getItem('registrants') || '[]');
-      registrants.push({
+      // 1. Save to Database (Firebase / localStorage fallback)
+      await DB.addRegistrant({
         timestamp: new Date().toLocaleString(),
         name,
         phone,
@@ -376,7 +378,6 @@
         discord,
         reason
       });
-      localStorage.setItem('registrants', JSON.stringify(registrants));
 
       // 2. Dispatch to Webhook (if set in config.js)
       if (typeof CONFIG !== 'undefined' && CONFIG.discordWebhookUrl && CONFIG.discordWebhookUrl !== 'YOUR_DISCORD_WEBHOOK_URL_HERE') {

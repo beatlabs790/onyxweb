@@ -125,14 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Admin State Controllers & Gates ---
 
-  // --- Admin State Controllers & Gates ---
-
   // 1. Theme Color Scheme
-  function applyThemeColors() {
-    const customPrimary = localStorage.getItem('themePrimary');
-    const customSecondary = localStorage.getItem('themeSecondary');
-    const customAccent = localStorage.getItem('themeAccent');
-    const customOpacity = localStorage.getItem('themeGlowOpacity');
+  async function applyThemeColors() {
+    const customPrimary = await DB.getSetting('themePrimary', '#6366f1');
+    const customSecondary = await DB.getSetting('themeSecondary', '#a855f7');
+    const customAccent = await DB.getSetting('themeAccent', '#f43f5e');
+    const customOpacity = await DB.getSetting('themeGlowOpacity', '12');
 
     if (customPrimary) document.documentElement.style.setProperty('--primary', customPrimary);
     if (customSecondary) document.documentElement.style.setProperty('--secondary', customSecondary);
@@ -152,9 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. Announcement Ticker
-  function syncTicker() {
-    const tickerActive = localStorage.getItem('tickerActive') === 'true';
-    const tickerText = localStorage.getItem('tickerText') || '🔥 OnyxChat v1.2.0 is coming soon with E2E encrypted group calls! Stay tuned.';
+  async function syncTicker() {
+    const tickerActive = (await DB.getSetting('tickerActive', 'false')) === 'true';
+    const tickerText = await DB.getSetting('tickerText', '🔥 OnyxChat v1.2.0 is coming soon with E2E encrypted group calls! Stay tuned.');
     
     let existingTicker = document.querySelector('.announcement-ticker-banner');
     
@@ -184,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3. Maintenance mode check
-  function checkMaintenanceMode() {
-    const maintenanceActive = localStorage.getItem('maintenanceActive') === 'true';
+  async function checkMaintenanceMode() {
+    const maintenanceActive = (await DB.getSetting('maintenanceActive', 'false')) === 'true';
     const isBypassed = sessionStorage.getItem('maintenanceBypass') === 'true';
     const isControlPage = window.location.pathname.toLowerCase().includes('admin.html');
     
@@ -194,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (maintenanceActive && !isBypassed && !isControlPage) {
       if (!existingLock) {
-        const customReason = localStorage.getItem('maintenanceReason') || 'OnyxChat is currently optimizing and syncing local databases. Core services will resume shortly.';
+        const customReason = await DB.getSetting('maintenanceReason', 'OnyxChat is currently optimizing and syncing local databases. Core services will resume shortly.');
         const overlay = document.createElement('div');
         overlay.id = 'visitor-maintenance-overlay';
         overlay.className = 'maintenance-overlay';
@@ -232,7 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hashed = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            const correctHash = '006657998771eb1ef75d0a26f8824af99da8bf4f7261d3a4d896708286a618eb';
+            
+            // Sync password check with Firebase settings if present, otherwise default
+            const correctHash = await DB.getSetting('adminHash', '006657998771eb1ef75d0a26f8824af99da8bf4f7261d3a4d896708286a618eb');
 
             if (hashed === correctHash) {
               sessionStorage.setItem('maintenanceBypass', 'true');
@@ -253,16 +253,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. Download distribution details sync
-  function syncDownloads() {
+  async function syncDownloads() {
     const winBtn = document.getElementById('download-win-btn');
     const winVer = document.getElementById('download-win-ver');
     const mobBtn = document.getElementById('download-mob-btn');
     const mobVer = document.getElementById('download-mob-ver');
 
-    const customWinLink = localStorage.getItem('downloadWinLink');
-    const customWinVer = localStorage.getItem('downloadWinVersion');
-    const customMobLink = localStorage.getItem('downloadMobileLink');
-    const customMobVer = localStorage.getItem('downloadMobileVersion');
+    const customWinLink = await DB.getSetting('downloadWinLink', 'https://github.com/beatlabs790/onyxchat/releases');
+    const customWinVer = await DB.getSetting('downloadWinVersion', 'v1.0.0 Stable Build');
+    const customMobLink = await DB.getSetting('downloadMobileLink', 'https://github.com/beatlabs790/onyxchat');
+    const customMobVer = await DB.getSetting('downloadMobileVersion', 'Beta Channel');
 
     if (winBtn && customWinLink) winBtn.setAttribute('href', customWinLink);
     if (winVer && customWinVer) winVer.innerText = customWinVer;
@@ -278,23 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
     { q: "How do I backup my chat log?", a: "You can export your database as an encrypted file container directly from the client Settings screen at any time." }
   ];
 
-  function syncFAQs() {
+  async function syncFAQs() {
     const homeFaqGrid = document.getElementById('home-faq-container');
     const aboutFaqGrid = document.getElementById('about-faq-container');
     
     if (homeFaqGrid || aboutFaqGrid) {
-      let list = defaultFAQs;
-      const stored = localStorage.getItem('faqs');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.length > 0) {
-            list = parsed;
-          }
-        } catch(e) {}
-      } else {
-        localStorage.setItem('faqs', JSON.stringify(defaultFAQs));
-      }
+      const list = await DB.getFAQs(defaultFAQs);
       
       if (homeFaqGrid) {
         homeFaqGrid.innerHTML = list.map(faq => `
@@ -334,9 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Release Timer Countdown
   let timerInterval = null;
-  function syncReleaseTimer() {
-    const timerActive = localStorage.getItem('releaseTimerActive') === 'true';
-    const timerDateStr = localStorage.getItem('releaseTimerDate');
+  async function syncReleaseTimer() {
+    const timerActive = (await DB.getSetting('releaseTimerActive', 'false')) === 'true';
+    const timerDateStr = await DB.getSetting('releaseTimerDate', '');
     const countdownContainer = document.getElementById('release-countdown-container');
 
     if (timerInterval) {
@@ -381,13 +370,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialize all properties on load
-  applyThemeColors();
-  syncTicker();
-  checkMaintenanceMode();
-  syncDownloads();
-  syncFAQs();
-  syncReleaseTimer();
+  // Async Settings Initializer
+  async function initAllSettings() {
+    await applyThemeColors();
+    await syncTicker();
+    await checkMaintenanceMode();
+    await syncDownloads();
+    await syncFAQs();
+    await syncReleaseTimer();
+  }
+  initAllSettings();
 
   // --- 7. Developers SDK Tab selectors ---
   const tabNode = document.getElementById('tab-node');
@@ -425,25 +417,28 @@ document.addEventListener('DOMContentLoaded', () => {
     tabRust.addEventListener('click', () => activateTab(tabRust, codeRust));
   }
 
-  // Listen to Storage events from other tabs to ensure instant real-time sync!
-  window.addEventListener('storage', (e) => {
-    if (e.key === 'themePrimary' || e.key === 'themeSecondary' || e.key === 'themeAccent' || e.key === 'themeGlowOpacity') {
-      applyThemeColors();
-    }
-    if (e.key === 'tickerActive' || e.key === 'tickerText') {
-      syncTicker();
-    }
-    if (e.key === 'maintenanceActive' || e.key === 'maintenanceReason') {
-      checkMaintenanceMode();
-    }
-    if (e.key === 'downloadWinLink' || e.key === 'downloadWinVersion' || e.key === 'downloadMobileLink' || e.key === 'downloadMobileVersion') {
-      syncDownloads();
-    }
-    if (e.key === 'faqs') {
+  // Listen to Firebase Cloud changes in real-time across visitors worldwide!
+  if (DB.db) {
+    DB.db.ref('settings').on('child_changed', (snapshot) => {
+      const key = snapshot.key;
+      const val = snapshot.val();
+      localStorage.setItem(key, val);
+      
+      if (['themePrimary', 'themeSecondary', 'themeAccent', 'themeGlowOpacity'].includes(key)) {
+        applyThemeColors();
+      } else if (['tickerActive', 'tickerText'].includes(key)) {
+        syncTicker();
+      } else if (['maintenanceActive', 'maintenanceReason'].includes(key)) {
+        checkMaintenanceMode();
+      } else if (['downloadWinLink', 'downloadWinVersion', 'downloadMobileLink', 'downloadMobileVersion'].includes(key)) {
+        syncDownloads();
+      } else if (['releaseTimerActive', 'releaseTimerDate'].includes(key)) {
+        syncReleaseTimer();
+      }
+    });
+
+    DB.db.ref('faqs').on('value', () => {
       syncFAQs();
-    }
-    if (e.key === 'releaseTimerActive' || e.key === 'releaseTimerDate') {
-      syncReleaseTimer();
-    }
-  });
+    });
+  }
 });

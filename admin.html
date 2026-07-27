@@ -530,7 +530,10 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
   <script src="config.js"></script>
+  <script src="db.js"></script>
   <script src="main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -657,7 +660,7 @@
         });
       }
 
-      // Load Configs from localStorage
+      // Load Configs from DB
       const mtInput = document.getElementById('maintenance-toggle');
       const mrInput = document.getElementById('maintenance-reason');
       const ttInput = document.getElementById('timer-toggle');
@@ -665,22 +668,25 @@
       const tickTog = document.getElementById('ticker-toggle');
       const tickTxt = document.getElementById('ticker-text');
 
-      if (mtInput) mtInput.checked = localStorage.getItem('maintenanceActive') === 'true';
-      if (mrInput) mrInput.value = localStorage.getItem('maintenanceReason') || '';
-      if (ttInput) ttInput.checked = localStorage.getItem('releaseTimerActive') === 'true';
-      if (tdInput) tdInput.value = localStorage.getItem('releaseTimerDate') || '';
-      if (tickTog) tickTog.checked = localStorage.getItem('tickerActive') === 'true';
-      if (tickTxt) tickTxt.value = localStorage.getItem('tickerText') || '';
+      async function loadGateAndTicker() {
+        if (mtInput) mtInput.checked = (await DB.getSetting('maintenanceActive', 'false')) === 'true';
+        if (mrInput) mrInput.value = await DB.getSetting('maintenanceReason', '');
+        if (ttInput) ttInput.checked = (await DB.getSetting('releaseTimerActive', 'false')) === 'true';
+        if (tdInput) tdInput.value = await DB.getSetting('releaseTimerDate', '');
+        if (tickTog) tickTog.checked = (await DB.getSetting('tickerActive', 'false')) === 'true';
+        if (tickTxt) tickTxt.value = await DB.getSetting('tickerText', '');
+      }
+      loadGateAndTicker();
 
       // Save Gate Settings
       const saveGateBtn = document.getElementById('save-gate-btn');
       if (saveGateBtn) {
-        saveGateBtn.addEventListener('click', () => {
-          localStorage.setItem('maintenanceActive', mtInput.checked);
-          localStorage.setItem('maintenanceReason', mrInput.value);
-          localStorage.setItem('releaseTimerActive', ttInput.checked);
-          localStorage.setItem('releaseTimerDate', tdInput.value);
-          printConsole('Gate settings successfully saved. Reload other tabs to see changes.', 'success');
+        saveGateBtn.addEventListener('click', async () => {
+          await DB.setSetting('maintenanceActive', String(mtInput.checked));
+          await DB.setSetting('maintenanceReason', mrInput.value);
+          await DB.setSetting('releaseTimerActive', String(ttInput.checked));
+          await DB.setSetting('releaseTimerDate', tdInput.value);
+          printConsole('Gate settings successfully saved and synced globally.', 'success');
           
           // Flash page bypass just in case they locked themselves out
           if (!mtInput.checked) {
@@ -692,10 +698,10 @@
       // Save Ticker Settings
       const saveTickerBtn = document.getElementById('save-ticker-btn');
       if (saveTickerBtn) {
-        saveTickerBtn.addEventListener('click', () => {
-          localStorage.setItem('tickerActive', tickTog.checked);
-          localStorage.setItem('tickerText', tickTxt.value);
-          printConsole('Announcement ticker broadcast updated. Reload other tabs to display.', 'success');
+        saveTickerBtn.addEventListener('click', async () => {
+          await DB.setSetting('tickerActive', String(tickTog.checked));
+          await DB.setSetting('tickerText', tickTxt.value);
+          printConsole('Announcement ticker broadcast updated and synced globally.', 'success');
         });
       }
 
@@ -778,18 +784,21 @@
       const dlMobVer = document.getElementById('dl-mob-ver');
       const saveDlBtn = document.getElementById('save-downloads-btn');
 
-      if (dlWinUrl) dlWinUrl.value = localStorage.getItem('downloadWinLink') || 'https://github.com/beatlabs790/onyxchat/releases';
-      if (dlWinVer) dlWinVer.value = localStorage.getItem('downloadWinVersion') || 'v1.0.0 Stable Build';
-      if (dlMobUrl) dlMobUrl.value = localStorage.getItem('downloadMobileLink') || 'https://github.com/beatlabs790/onyxchat';
-      if (dlMobVer) dlMobVer.value = localStorage.getItem('downloadMobileVersion') || 'Beta Channel';
+      async function loadDownloads() {
+        if (dlWinUrl) dlWinUrl.value = await DB.getSetting('downloadWinLink', 'https://github.com/beatlabs790/onyxchat/releases');
+        if (dlWinVer) dlWinVer.value = await DB.getSetting('downloadWinVersion', 'v1.0.0 Stable Build');
+        if (dlMobUrl) dlMobUrl.value = await DB.getSetting('downloadMobileLink', 'https://github.com/beatlabs790/onyxchat');
+        if (dlMobVer) dlMobVer.value = await DB.getSetting('downloadMobileVersion', 'Beta Channel');
+      }
+      loadDownloads();
 
       if (saveDlBtn) {
-        saveDlBtn.addEventListener('click', () => {
-          localStorage.setItem('downloadWinLink', dlWinUrl.value);
-          localStorage.setItem('downloadWinVersion', dlWinVer.value);
-          localStorage.setItem('downloadMobileLink', dlMobUrl.value);
-          localStorage.setItem('downloadMobileVersion', dlMobVer.value);
-          printConsole('Download targets and tags saved. Reload other tabs to sync.', 'success');
+        saveDlBtn.addEventListener('click', async () => {
+          await DB.setSetting('downloadWinLink', dlWinUrl.value);
+          await DB.setSetting('downloadWinVersion', dlWinVer.value);
+          await DB.setSetting('downloadMobileLink', dlMobUrl.value);
+          await DB.setSetting('downloadMobileVersion', dlMobVer.value);
+          printConsole('Download targets and tags saved and synced globally.', 'success');
         });
       }
 
@@ -801,17 +810,23 @@
       const glowOpacityText = document.getElementById('glow-opacity-val');
       const saveThemeBtn = document.getElementById('save-theme-btn');
 
-      const loadedPrimary = localStorage.getItem('themePrimary') || '#6366f1';
-      const loadedSecondary = localStorage.getItem('themeSecondary') || '#a855f7';
-      const loadedAccent = localStorage.getItem('themeAccent') || '#f43f5e';
-      const loadedOpacity = localStorage.getItem('themeGlowOpacity') || '12';
+      async function loadThemeSettings() {
+        const loadedPrimary = await DB.getSetting('themePrimary', '#6366f1');
+        const loadedSecondary = await DB.getSetting('themeSecondary', '#a855f7');
+        const loadedAccent = await DB.getSetting('themeAccent', '#f43f5e');
+        const loadedOpacity = await DB.getSetting('themeGlowOpacity', '12');
 
-      if (primaryColorPicker) primaryColorPicker.value = loadedPrimary;
-      if (secondaryColorPicker) secondaryColorPicker.value = loadedSecondary;
-      if (accentColorPicker) accentColorPicker.value = loadedAccent;
+        if (primaryColorPicker) primaryColorPicker.value = loadedPrimary;
+        if (secondaryColorPicker) secondaryColorPicker.value = loadedSecondary;
+        if (accentColorPicker) accentColorPicker.value = loadedAccent;
+        if (glowOpacityRange) {
+          glowOpacityRange.value = loadedOpacity;
+          glowOpacityText.innerText = loadedOpacity + '%';
+        }
+      }
+      loadThemeSettings();
+
       if (glowOpacityRange) {
-        glowOpacityRange.value = loadedOpacity;
-        glowOpacityText.innerText = loadedOpacity + '%';
         glowOpacityRange.addEventListener('input', () => {
           glowOpacityText.innerText = glowOpacityRange.value + '%';
         });
@@ -832,19 +847,19 @@
       }
 
       if (saveThemeBtn) {
-        saveThemeBtn.addEventListener('click', () => {
+        saveThemeBtn.addEventListener('click', async () => {
           const p = primaryColorPicker.value;
           const s = secondaryColorPicker.value;
           const a = accentColorPicker.value;
           const o = glowOpacityRange.value;
 
-          localStorage.setItem('themePrimary', p);
-          localStorage.setItem('themeSecondary', s);
-          localStorage.setItem('themeAccent', a);
-          localStorage.setItem('themeGlowOpacity', o);
+          await DB.setSetting('themePrimary', p);
+          await DB.setSetting('themeSecondary', s);
+          await DB.setSetting('themeAccent', a);
+          await DB.setSetting('themeGlowOpacity', o);
 
           applyThemeLocal(p, s, a, o);
-          printConsole('Global theme accent and opacity applied successfully.', 'success');
+          printConsole('Global theme accent and opacity applied successfully and synced globally.', 'success');
         });
       }
 
@@ -861,18 +876,9 @@
         { q: "How do I backup my chat log?", a: "You can export your database as an encrypted file container directly from the client Settings screen at any time." }
       ];
 
-      function getFAQs() {
-        const stored = localStorage.getItem('faqs');
-        if (!stored) {
-          localStorage.setItem('faqs', JSON.stringify(defaultFAQs));
-          return defaultFAQs;
-        }
-        return JSON.parse(stored);
-      }
-
-      function renderFaqInventory() {
+      async function renderFaqInventory() {
         if (!adminFaqList) return;
-        const list = getFAQs();
+        const list = await DB.getFAQs(defaultFAQs);
 
         if (list.length === 0) {
           adminFaqList.innerHTML = `<div style="font-style:italic; color:var(--text-secondary); text-align:center; padding:1.5rem;">No FAQs stored in memory.</div>`;
@@ -891,19 +897,19 @@
 
         // Bind delete buttons
         document.querySelectorAll('.delete-faq-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
+          btn.addEventListener('click', async () => {
             const idx = parseInt(btn.getAttribute('data-index'));
-            const currentList = getFAQs();
+            const currentList = await DB.getFAQs(defaultFAQs);
             currentList.splice(idx, 1);
-            localStorage.setItem('faqs', JSON.stringify(currentList));
+            await DB.saveFAQs(currentList);
             renderFaqInventory();
-            printConsole('FAQ card item deleted.', 'warning');
+            printConsole('FAQ card item deleted and synced globally.', 'warning');
           });
         });
       }
 
       if (addFaqBtn) {
-        addFaqBtn.addEventListener('click', () => {
+        addFaqBtn.addEventListener('click', async () => {
           const q = faqQInput.value.trim();
           const a = faqAInput.value.trim();
 
@@ -912,14 +918,14 @@
             return;
           }
 
-          const currentList = getFAQs();
+          const currentList = await DB.getFAQs(defaultFAQs);
           currentList.push({ q, a });
-          localStorage.setItem('faqs', JSON.stringify(currentList));
+          await DB.saveFAQs(currentList);
           
           faqQInput.value = '';
           faqAInput.value = '';
           renderFaqInventory();
-          printConsole(`New FAQ card created successfully: "${q}"`, 'success');
+          printConsole(`New FAQ card created successfully and synced globally: "${q}"`, 'success');
         });
       }
 
@@ -930,9 +936,9 @@
       const clearRegBtn = document.getElementById('clear-reg-btn');
       const exportRegBtn = document.getElementById('export-reg-btn');
 
-      function loadRegistrants() {
+      async function loadRegistrants() {
         if (!regTableBody) return;
-        const list = JSON.parse(localStorage.getItem('registrants') || '[]');
+        const list = await DB.getRegistrants();
         
         if (list.length === 0) {
           regTableBody.innerHTML = `
@@ -959,18 +965,18 @@
       }
 
       if (clearRegBtn) {
-        clearRegBtn.addEventListener('click', () => {
+        clearRegBtn.addEventListener('click', async () => {
           if (confirm('⚠️ Warning: Are you sure you want to clear the registrant directory? This cannot be undone.')) {
-            localStorage.setItem('registrants', '[]');
+            await DB.clearRegistrants();
             loadRegistrants();
-            printConsole('Beta pre-registrant archive wiped.', 'warning');
+            printConsole('Beta pre-registrant archive wiped globally.', 'warning');
           }
         });
       }
 
       if (exportRegBtn) {
-        exportRegBtn.addEventListener('click', () => {
-          const list = JSON.parse(localStorage.getItem('registrants') || '[]');
+        exportRegBtn.addEventListener('click', async () => {
+          const list = await DB.getRegistrants();
           if (list.length === 0) {
             alert('No registration profiles to export.');
             return;
