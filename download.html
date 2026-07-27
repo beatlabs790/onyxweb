@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download | OnyxChat — Chat App for PC & Android APK</title>
+  <meta name="description" content="Download direct installer files of OnyxChat. Get the secure chat app for PC (Windows) and chat app for Android (APK) to communicate privately.">
+  <meta name="keywords" content="chat app for android, chat app for pc, download chat app, android apk, windows installer, encrypted chat client, BeatLabs OnyxChat">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="onyx%20logo.png">
+  <style>
+    .download-page-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem 2rem;
+    }
+
+    .download-page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .download-page-header p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin: 3rem auto;
+      max-width: 900px;
+    }
+
+    .download-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2.5rem;
+      gap: 1.25rem;
+    }
+
+    .platform-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .download-card:hover .platform-icon {
+      background: var(--primary-gradient);
+      border-color: transparent;
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .platform-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: currentColor;
+    }
+
+    .download-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .download-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .download-card .btn {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.85rem 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    /* System Requirements Section */
+    .req-section {
+      margin: 5rem 0;
+    }
+
+    .req-table-wrapper {
+      margin-top: 2rem;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    th {
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    td {
+      color: var(--text-secondary);
+    }
+
+    tr:hover td {
+      color: var(--text-primary);
+    }
+
+    /* Release notes section */
+    .release-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .release-box {
+      margin-top: 2rem;
+      padding: 2rem;
+    }
+
+    .release-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .release-version {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .release-date {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .release-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-left: 0.5rem;
+    }
+
+    .release-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .release-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    @media (max-width: 768px) {
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="glow-blob blob-1"></div>
+  <div class="glow-blob blob-2"></div>
+  <div class="glow-blob blob-3"></div>
+
+  <!-- Background Video -->
+  <div class="video-bg-container">
+    <video autoplay loop muted playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img class="logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+        <span class="logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="developers.html" class="nav-link">Developers</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Direct Header Download Button -->
+        <a href="download.html" class="btn btn-secondary header-download-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 12v7H5v-7H3v7a2.002 2.002 0 0 0 2 2h14a2.002 2.002 0 0 0 2-2v-7h-2zm-6 .586V3h-2v9.586L7.707 9.293 6.293 10.707l6 6 6-6-1.414-1.414z"/>
+          </svg>
+          Download
+        </a>
+
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3a9 9 0 1 0 9 9 9.005 9.005 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7.008 7.008 0 0 1-7 7z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7a5 5 0 1 0 5 5 5.006 5.006 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3.003 3.003 0 0 1-3 3z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section-container">
+      <div class="download-page-header fade-in-scroll">
+        <h1>Get <span class="title-roman">Onyx</span><span class="title-italic">Chat</span></h1>
+        <p>Available for desktop and mobile systems. Sync your encrypted database and resume chatting in seconds.</p>
+      </div>
+
+      <!-- Release Countdown Timer (Managed dynamically from Admin Panel) -->
+      <div id="release-countdown-container" class="countdown-section-banner fade-in-scroll" style="display: none; max-width: 600px; margin: 0 auto 3rem auto;">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem;">Next Major Update Countdown</h3>
+        <div class="countdown-digits">
+          <div class="countdown-box">
+            <span class="countdown-val" id="days">00</span>
+            <span class="countdown-lbl">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="hours">00</span>
+            <span class="countdown-lbl">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="minutes">00</span>
+            <span class="countdown-lbl">Mins</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="seconds">00</span>
+            <span class="countdown-lbl">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Downloads Grid (Windows and Mobile Only) -->
+      <div class="download-grid">
+        <!-- Windows -->
+        <div class="glass-card download-card fade-in-scroll">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.102zM10.8 1.95L24 0v11.55H10.8V1.95zm13.2 10.5V24l-13.2-1.95v-9.6H24z"/>
+            </svg>
+          </div>
+          <h3>Windows</h3>
+          <p>Requires Windows 10 or later (64-bit)</p>
+          <p style="font-weight: 500;" id="download-win-ver">v1.0.0 Stable Build</p>
+          <a href="https://github.com/beatlabs790/onyxchat/releases" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="download-win-btn">Download .exe installer</a>
+        </div>
+
+        <!-- Mobile Systems -->
+        <div class="glass-card download-card fade-in-scroll">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+            </svg>
+          </div>
+          <h3>Mobile Client</h3>
+          <p>Compatible with Android (8+) and iOS (14+)</p>
+          <p style="font-weight: 500;" id="download-mob-ver">Beta Channel</p>
+          <a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="download-mob-btn">Get Android APK</a>
+        </div>
+      </div>
+
+      <!-- System Requirements -->
+      <div class="glass-panel req-section fade-in-scroll">
+        <div style="padding: 2.5rem 2.5rem 0 2.5rem;">
+          <h2>System <span class="glow-text">Requirements</span></h2>
+          <p style="color: var(--text-secondary); margin-top: 0.5rem;">Verify your hardware setup satisfies the constraints to run OnyxChat smoothly.</p>
+        </div>
+        <div class="req-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Hardware Spec</th>
+                <th>Minimum Requirement</th>
+                <th>Recommended Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Operating System</td>
+                <td>Windows 10, Android 8.0, iOS 14</td>
+                <td>Windows 11, Android 13, iOS 17</td>
+              </tr>
+              <tr>
+                <td>Processor (CPU)</td>
+                <td>Intel Core i3 / ARM Cortex-A53</td>
+                <td>Intel Core i5 / Snapdragon 8 Gen 1</td>
+              </tr>
+              <tr>
+                <td>Memory (RAM)</td>
+                <td>2 GB RAM</td>
+                <td>4 GB RAM or higher</td>
+              </tr>
+              <tr>
+                <td>Disk Storage</td>
+                <td>150 MB for installation files</td>
+                <td>500 MB+ (for cached chat databases and files)</td>
+              </tr>
+              <tr>
+                <td>Network Link</td>
+                <td>Broadband WiFi / Cellular network (3G/4G)</td>
+                <td>High-speed Fiber Broadband / 5G Mobile Connection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Release Notes -->
+      <div class="release-section fade-in-scroll">
+        <h2 style="text-align: center;">Release <span class="glow-text">Notes</span></h2>
+        <div class="glass-panel release-box">
+          <div class="release-header">
+            <span class="release-version">OnyxChat v1.0.0 Stable</span>
+            <span class="release-date">Released on July 27, 2026</span>
+          </div>
+          <ul class="release-list">
+            <li>Introduced double-ratchet secure messaging for absolute chat privacy.</li>
+            <li>Added premium glassmorphism user interface with customizable transparency.</li>
+            <li>Implemented dynamic dark and light mode variable values.</li>
+            <li>Added cloud sync mechanism for instant multi-device messaging coordination.</li>
+            <li>Added drag-and-drop file sharing functionality allowing data packets up to 2GB.</li>
+            <li>Configured high fidelity audio/video call connectivity via WebRTC.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="admin.html" class="footer-brand-logo" aria-label="Admin Access">
+          <img class="footer-logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+          <span class="footer-logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+        </a>
+        <p class="footer-tagline">Private messaging, effortless connection.</p>
+        <p class="footer-tagline" style="font-size: 0.8rem; opacity: 0.7;">An elegant chat client by BeatLabs.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="download.html" class="footer-link">Download</a></li>
+          <li><a href="developers.html" class="footer-link">Developers</a></li>
+          <li><a href="about.html" class="footer-link">About & Contact</a></li>
+          <li><a href="admin.html" class="footer-link" style="opacity: 0.65;"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>Admin Panel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul class="footer-links">
+          <li><a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="footer-link">Discord Support</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Code</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Report issues</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Developer</h4>
+        <div class="footer-contact-info">
+          <p>Email: <a href="mailto:beatwave790@gmail.com">beatwave790@gmail.com</a></p>
+          <p>Website: <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">beatlabss.vercel.app</a></p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/_beat_labs_" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <img src="instagram.webp" alt="Instagram" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+              <img src="discord.png" alt="Discord" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 OnyxChat. All rights reserved.</p>
+      <p class="dev-attribution">Created by <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">BeatLabs</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

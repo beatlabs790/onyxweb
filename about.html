@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | OnyxChat — Secure Chat App for Android & PC</title>
+  <meta name="description" content="Discover the mission behind OnyxChat, the ultimate secure chat app for Android and PC. Made by BeatLabs for high-end encrypted messaging.">
+  <meta name="keywords" content="chat app for android, chat app for pc, encrypted chat, secure messenger, open source chat, p2p chat client, BeatLabs OnyxChat">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="onyx%20logo.png">
+  <style>
+    .about-page-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem 2rem;
+    }
+
+    .about-page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .about-page-header p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
+      margin: 3rem 0;
+      align-items: start;
+    }
+
+    .about-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* FAQ Section styling */
+    .faq-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .faq-item {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Contact Form Styles */
+    .contact-card {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-card h2 {
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--input-focus);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+      font-family: inherit;
+    }
+
+    .contact-card .btn {
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 968px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-page-header h1 {
+        font-size: 2.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="glow-blob blob-1"></div>
+  <div class="glow-blob blob-2"></div>
+  <div class="glow-blob blob-3"></div>
+
+  <!-- Background Video -->
+  <div class="video-bg-container">
+    <video autoplay loop muted playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img class="logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+        <span class="logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="developers.html" class="nav-link">Developers</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Direct Header Download Button -->
+        <a href="download.html" class="btn btn-secondary header-download-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 12v7H5v-7H3v7a2.002 2.002 0 0 0 2 2h14a2.002 2.002 0 0 0 2-2v-7h-2zm-6 .586V3h-2v9.586L7.707 9.293 6.293 10.707l6 6 6-6-1.414-1.414z"/>
+          </svg>
+          Download
+        </a>
+
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3a9 9 0 1 0 9 9 9.005 9.005 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7.008 7.008 0 0 1-7 7z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7a5 5 0 1 0 5 5 5.006 5.006 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3.003 3.003 0 0 1-3 3z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section-container">
+      <div class="about-page-header fade-in-scroll">
+        <h1>About <span class="title-roman">Onyx</span><span class="title-italic">Chat</span></h1>
+        <p>Private messaging, effortless connection. Read about our development principles and direct support operations.</p>
+      </div>
+
+      <div class="about-layout">
+        <!-- Text details and developer showcase -->
+        <div class="about-info-col">
+          <div class="glass-panel fade-in-scroll" style="padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+            <h2 style="letter-spacing: -0.5px;">Our Mission</h2>
+            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+              OnyxChat was created with one simple objective: to provide a beautifully secure chat client that puts user privacy first without sacrificing aesthetics or speed. In a world of centralized data surveillance, OnyxChat offers a safe, self-contained messaging space.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+              We believe design is just as important as functionality. Our glassmorphism UI integrates smooth animations, responsive grids, and dynamic theme switching to deliver an elegant experience on every screen.
+            </p>
+          </div>
+
+          <!-- FAQ Accordion Mock -->
+          <div class="faq-section" id="about-faq-container">
+            <!-- Injected dynamically via main.js -->
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="glass-panel contact-card fade-in-scroll">
+          <h2>Get in <span class="glow-text">Touch</span></h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Submit your inquiries, support requests, or partnership proposals below.</p>
+          
+          <form action="#" method="POST" style="display:flex; flex-direction:column; gap:1.25rem;" onsubmit="event.preventDefault(); alert('Message simulation sent! Thank you.');">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="yourname@gmail.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-input" placeholder="Your Message..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="admin.html" class="footer-brand-logo" aria-label="Admin Access">
+          <img class="footer-logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+          <span class="footer-logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+        </a>
+        <p class="footer-tagline">Private messaging, effortless connection.</p>
+        <p class="footer-tagline" style="font-size: 0.8rem; opacity: 0.7;">An elegant chat client by BeatLabs.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="download.html" class="footer-link">Download</a></li>
+          <li><a href="developers.html" class="footer-link">Developers</a></li>
+          <li><a href="about.html" class="footer-link">About & Contact</a></li>
+          <li><a href="admin.html" class="footer-link" style="opacity: 0.65;"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>Admin Panel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul class="footer-links">
+          <li><a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="footer-link">Discord Support</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Code</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Report issues</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Developer</h4>
+        <div class="footer-contact-info">
+          <p>Email: <a href="mailto:beatwave790@gmail.com">beatwave790@gmail.com</a></p>
+          <p>Website: <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">beatlabss.vercel.app</a></p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/_beat_labs_" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <img src="instagram.webp" alt="Instagram" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+              <img src="discord.png" alt="Discord" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 OnyxChat. All rights reserved.</p>
+      <p class="dev-attribution">Created by <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">BeatLabs</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

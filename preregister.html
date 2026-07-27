@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Register | OnyxChat — Secure Beta Access</title>
+  <meta name="description" content="Pre-register for early beta access of OnyxChat. Secure your handle on the ultimate chat app for Android and chat app for PC.">
+  <meta name="keywords" content="chat app for android, chat app for pc, beta pre-registration, secure messenger, open source chat, p2p chat, BeatLabs OnyxChat">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="onyx%20logo.png">
+  <style>
+    .pre-reg-container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .pre-reg-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .pre-reg-header h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .pre-reg-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+    .pre-reg-card {
+      padding: 3rem 2.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 580px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+    .form-group-full {
+      margin-bottom: 1.5rem;
+    }
+    .form-group-full label, .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .form-group-full label span, .form-group label span {
+      color: var(--heading-accent);
+      margin-left: 2px;
+    }
+    .form-group-full input, .form-group input, .form-group-full textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border-radius: 8px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .form-group-full input:focus, .form-group input:focus, .form-group-full textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.25);
+    }
+    .success-panel {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .success-icon-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.1);
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22d3ee;
+      animation: float 4s ease-in-out infinite;
+    }
+    .success-icon-wrap svg {
+      width: 36px;
+      height: 36px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="glow-blob blob-1"></div>
+  <div class="glow-blob blob-2"></div>
+  <div class="glow-blob blob-3"></div>
+
+  <!-- Background Video -->
+  <div class="video-bg-container">
+    <video autoplay loop muted playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img class="logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+        <span class="logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="developers.html" class="nav-link">Developers</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Direct Header Download Button -->
+        <a href="download.html" class="btn btn-secondary header-download-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 12v7H5v-7H3v7a2.002 2.002 0 0 0 2 2h14a2.002 2.002 0 0 0 2-2v-7h-2zm-6 .586V3h-2v9.586L7.707 9.293 6.293 10.707l6 6 6-6-1.414-1.414z"/>
+          </svg>
+          Download
+        </a>
+
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3a9 9 0 1 0 9 9 9.005 9.005 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7.008 7.008 0 0 1-7 7z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7a5 5 0 1 0 5 5 5.006 5.006 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3.003 3.003 0 0 1-3 3z"/>
+            <path d="M12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V2a1 1 0 0 0-1-1zm0 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8.485-13.657a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14 14.14a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zM22 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM4 11H2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm16.485 7.071a1 1 0 0 0-1.414 0l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414zm-14.14-14.14a1 1 0 0 0-1.414 0L3.517 5.343a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0 0-1.414z"/>
+          </svg>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="pre-reg-container">
+      <div class="pre-reg-header fade-in-scroll">
+        <h1>Beta <span class="title-roman">Pre-</span><span class="title-italic">Registration</span></h1>
+        <p>Apply for initial beta keys. Form submissions will trigger secure local node storage and webhook broadcasts.</p>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="glass-panel pre-reg-card fade-in-scroll" id="form-panel">
+        <form id="pre-reg-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-name">Full Name<span>*</span></label>
+              <input type="text" id="reg-name" required placeholder="e.g. John Doe">
+            </div>
+            <div class="form-group">
+              <label for="reg-phone">Phone Number</label>
+              <input type="text" id="reg-phone" placeholder="e.g. +91 99999 99999">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-email">Email Address<span>*</span></label>
+              <input type="email" id="reg-email" required placeholder="e.g. name@domain.com">
+            </div>
+            <div class="form-group">
+              <label for="reg-insta">Instagram ID<span>*</span></label>
+              <input type="text" id="reg-insta" required placeholder="e.g. username">
+            </div>
+          </div>
+
+          <div class="form-group-full">
+            <label for="reg-discord">Discord ID</label>
+            <input type="text" id="reg-discord" placeholder="e.g. username#1234">
+          </div>
+
+          <div class="form-group-full">
+            <label for="reg-reason">Why do you want to pre-register?<span>*</span></label>
+            <textarea id="reg-reason" rows="4" required placeholder="Tell us how you intend to use OnyxChat..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 0.9rem 1.5rem;">
+            Submit Application
+          </button>
+        </form>
+      </div>
+
+      <!-- Success Screen -->
+      <div class="glass-panel success-panel fade-in-scroll" id="success-panel" style="display: none;">
+        <div class="success-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2>Application <span class="title-roman">Submitted</span></h2>
+        <p style="color: var(--text-secondary); max-width: 450px; line-height: 1.7;">
+          Thank you for signing up! Your beta pre-registration has been securely saved. You will receive email notifications once developer access codes are released.
+        </p>
+        <div style="display: flex; gap: 1rem;">
+          <a href="index.html" class="btn btn-secondary">Back to Home</a>
+          <a href="download.html" class="btn btn-primary">Check Releases</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="admin.html" class="footer-brand-logo" aria-label="Admin Access">
+          <img class="footer-logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+          <span class="footer-logo-text">Onyx<span style="font-style: italic; color: var(--heading-accent);">Chat</span></span>
+        </a>
+        <p class="footer-tagline">Private messaging, effortless connection.</p>
+        <p class="footer-tagline" style="font-size: 0.8rem; opacity: 0.7;">An elegant chat client by BeatLabs.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="download.html" class="footer-link">Download</a></li>
+          <li><a href="developers.html" class="footer-link">Developers</a></li>
+          <li><a href="about.html" class="footer-link">About & Contact</a></li>
+          <li><a href="admin.html" class="footer-link" style="opacity: 0.65;"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>Admin Panel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul class="footer-links">
+          <li><a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="footer-link">Discord Support</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Code</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Report issues</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Developer</h4>
+        <div class="footer-contact-info">
+          <p>Email: <a href="mailto:beatwave790@gmail.com">beatwave790@gmail.com</a></p>
+          <p>Website: <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">beatlabss.vercel.app</a></p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/_beat_labs_" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <img src="instagram.webp" alt="Instagram" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+              <img src="discord.png" alt="Discord" style="width: 18px; height: 18px; object-fit: contain;">
+            </a>
+            <a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 OnyxChat. All rights reserved.</p>
+      <p class="dev-attribution">Created by <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">BeatLabs</a></p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // Canvas Confetti Effect
+    function fireConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '99999';
+      document.body.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      let particles = [];
+      const colors = ['#6366f1', '#a855f7', '#ec4899', '#22d3ee', '#facc15'];
+      
+      for (let i = 0; i < 150; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height + 20,
+          vx: (Math.random() - 0.5) * 15,
+          vy: -Math.random() * 20 - 10,
+          r: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          gravity: 0.4
+        });
+      }
+      
+      function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotationSpeed;
+          
+          if (p.y < canvas.height + 50) {
+            alive = true;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation * Math.PI / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.r, -p.r, p.r * 2, p.r * 2);
+            ctx.restore();
+          }
+        });
+        
+        if (alive) {
+          requestAnimationFrame(update);
+        } else {
+          document.body.removeChild(canvas);
+        }
+      }
+      
+      update();
+    }
+
+    // Form Submission & Webhook broadcast
+    document.getElementById('pre-reg-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('reg-name').value;
+      const phone = document.getElementById('reg-phone').value;
+      const email = document.getElementById('reg-email').value;
+      const insta = document.getElementById('reg-insta').value;
+      const discord = document.getElementById('reg-discord').value;
+      const reason = document.getElementById('reg-reason').value;
+
+      // 1. Save Locally
+      const registrants = JSON.parse(localStorage.getItem('registrants') || '[]');
+      registrants.push({
+        timestamp: new Date().toLocaleString(),
+        name,
+        phone,
+        email,
+        insta,
+        discord,
+        reason
+      });
+      localStorage.setItem('registrants', JSON.stringify(registrants));
+
+      // 2. Dispatch to Webhook (if set in config.js)
+      if (typeof CONFIG !== 'undefined' && CONFIG.discordWebhookUrl && CONFIG.discordWebhookUrl !== 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
+        const payload = {
+          content: "🚀 **New Pre-Registration for OnyxChat Beta!**",
+          embeds: [{
+            title: "Registrant Application Details",
+            color: 6422321, // Cyan Hex code matching accent
+            fields: [
+              { name: "Name", value: name, inline: true },
+              { name: "Email", value: email, inline: true },
+              { name: "Phone", value: phone || "Not Provided", inline: true },
+              { name: "Instagram ID", value: "@" + insta, inline: true },
+              { name: "Discord ID", value: discord || "Not Provided", inline: true },
+              { name: "Reason for Applying", value: reason }
+            ],
+            timestamp: new Date().toISOString()
+          }]
+        };
+
+        fetch(CONFIG.discordWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.warn('Discord Webhook execution failed:', err));
+      }
+
+      // 3. UI Transition & Confetti
+      document.getElementById('form-panel').style.display = 'none';
+      document.getElementById('success-panel').style.display = 'flex';
+      fireConfetti();
+    });
+  </script>
+</body>
+</html>
