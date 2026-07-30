@@ -80,9 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
       const isOpen = navMenu.classList.contains('open');
-      mobileNavToggle.innerHTML = isOpen 
-        ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
-        : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+      mobileNavToggle.classList.toggle('open', isOpen);
+      mobileNavToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Close menu when any nav link is clicked (mobile UX)
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        mobileNavToggle.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+        navMenu.classList.remove('open');
+        mobileNavToggle.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
@@ -127,25 +142,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Theme Color Scheme
   async function applyThemeColors() {
-    const customPrimary = await DB.getSetting('themePrimary', '#6366f1');
-    const customSecondary = await DB.getSetting('themeSecondary', '#a855f7');
-    const customAccent = await DB.getSetting('themeAccent', '#f43f5e');
-    const customOpacity = await DB.getSetting('themeGlowOpacity', '12');
+    const customPrimary   = await DB.getSetting('themePrimary',   '#7c6dfa');
+    const customSecondary = await DB.getSetting('themeSecondary', '#c084fc');
+    const customAccent    = await DB.getSetting('themeAccent',    '#f472b6');
+    const customOpacity   = await DB.getSetting('themeGlowOpacity', '25');
 
-    if (customPrimary) document.documentElement.style.setProperty('--primary', customPrimary);
-    if (customSecondary) document.documentElement.style.setProperty('--secondary', customSecondary);
-    if (customAccent) document.documentElement.style.setProperty('--heading-accent', customAccent);
-    
-    if (customPrimary && customSecondary) {
-      document.documentElement.style.setProperty('--primary-gradient', `linear-gradient(135deg, ${customPrimary} 0%, ${customSecondary} 100%)`);
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result
+        ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+        : '124, 109, 250';
     }
 
+    const root = document.documentElement;
+    if (customPrimary)   root.style.setProperty('--accent', customPrimary);
+    if (customAccent)    root.style.setProperty('--pink',   customAccent);
+
+    if (customPrimary && customSecondary) {
+      root.style.setProperty('--primary-grad', `linear-gradient(135deg, ${customPrimary} 0%, ${customSecondary} 100%)`);
+      root.style.setProperty('--aurora-grad',  `linear-gradient(135deg, ${customPrimary} 0%, var(--teal) 100%)`);
+    }
     if (customPrimary && customOpacity) {
-      function hexToRgb(hex) {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '99, 102, 241';
-      }
-      document.documentElement.style.setProperty('--primary-glow', `rgba(${hexToRgb(customPrimary)}, ${customOpacity / 100})`);
+      const opacity = Number(customOpacity) / 100;
+      root.style.setProperty('--accent-glow', `rgba(${hexToRgb(customPrimary)}, ${opacity})`);
     }
   }
 
@@ -162,22 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
         existingTicker.className = 'announcement-ticker-banner';
         document.body.insertBefore(existingTicker, document.body.firstChild);
       }
-      existingTicker.innerHTML = `<div class="ticker-wrap"><div class="ticker-item">${tickerText}</div></div>`;
-      
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.top = '36px';
-      }
-      document.body.style.paddingTop = '36px';
+      existingTicker.innerHTML = `<div class="ticker-wrap"><div class="ticker-item">${tickerText} &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; ${tickerText} &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; ${tickerText}</div></div>`;
+      document.body.classList.add('has-ticker');
     } else {
-      if (existingTicker) {
-        existingTicker.remove();
-      }
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.top = '0';
-      }
-      document.body.style.paddingTop = '0';
+      if (existingTicker) existingTicker.remove();
+      document.body.classList.remove('has-ticker');
     }
   }
 
@@ -286,8 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const list = await DB.getFAQs(defaultFAQs);
       
       if (homeFaqGrid) {
-        homeFaqGrid.innerHTML = list.map(faq => `
-          <div class="glass-card faq-card-item fade-in-scroll">
+        homeFaqGrid.innerHTML = list.map((faq, i) => `
+          <div class="glass-card faq-card-item fade-in-scroll" style="transition-delay:${i * 0.07}s;">
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
             <h3>${faq.q}</h3>
             <p>${faq.a}</p>
           </div>
