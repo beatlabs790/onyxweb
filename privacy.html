@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy &amp; Terms of Service | OnyxChat</title>
+  <meta name="description" content="Privacy Policy, Terms of Service, and Copyright details for OnyxChat secure messenger. Learn how we secure your data.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="onyx%20logo.png">
+  <style>
+    .legal-section {
+      padding: 4rem 1.5rem 6rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .legal-card {
+      padding: 3rem 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .legal-card {
+        padding: 2rem 1.25rem;
+      }
+      .legal-section {
+        padding: 2rem 1rem 4rem;
+      }
+    }
+    .legal-nav-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-border);
+    }
+    .tab-btn.active {
+      color: var(--accent-light);
+      background: var(--accent-glow);
+      border-color: var(--accent-border);
+    }
+    .legal-content-pane {
+      display: none;
+    }
+    .legal-content-pane.active {
+      display: block;
+      animation: fadeUp 0.5s cubic-bezier(0.23,1,0.32,1) both;
+    }
+    .legal-card h2 {
+      font-size: 1.85rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+    .legal-card h3 {
+      font-size: 1.2rem;
+      margin: 1.8rem 0 0.8rem 0;
+      color: var(--text-primary);
+    }
+    .legal-card p {
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+    .legal-card ul {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+    .legal-card li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .legal-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Blobs -->
+  <div class="glow-blob blob-1"></div>
+  <div class="glow-blob blob-2"></div>
+  <div class="glow-blob blob-3"></div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link" aria-label="OnyxChat Home">
+        <img class="logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+        <span class="logo-text">OnyxChat</span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu" role="navigation" aria-label="Main Navigation">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="developers.html" class="nav-link">Developers</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="download.html" class="header-download-btn" aria-label="Download OnyxChat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 12v7H5v-7H3v7a2.002 2.002 0 0 0 2 2h14a2.002 2.002 0 0 0 2-2v-7h-2zm-6 .586V3h-2v9.586L7.707 9.293 6.293 10.707l6 6 6-6-1.414-1.414z"/></svg>
+          Download
+        </a>
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section class="legal-section">
+      <div class="legal-nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('privacy')">Privacy Policy</button>
+        <button class="tab-btn" onclick="switchTab('terms')">Terms of Service</button>
+        <button class="tab-btn" onclick="switchTab('copyright')">Copyright</button>
+      </div>
+
+      <div class="glass-panel legal-card">
+        
+        <!-- Privacy Policy Pane -->
+        <div id="pane-privacy" class="legal-content-pane active">
+          <h2>Privacy Policy</h2>
+          <p>Last updated: August 13, 2026</p>
+          <p>At OnyxChat, we build products with a privacy-first mindset. This Privacy Policy details how we handle information in connection with the OnyxChat applications and services.</p>
+          
+          <h3>1. No Collection of Your Personal Data</h3>
+          <p>OnyxChat does not collect, store, or sell your personal information. Specifically:</p>
+          <ul>
+            <li>We do not collect names, email addresses, or phone numbers.</li>
+            <li>We do not track your IP address or access location logs.</li>
+            <li>We do not collect telemetry, analytical diagnostics, or device identifiers.</li>
+          </ul>
+
+          <h3>2. Local Database &amp; Local Storage</h3>
+          <p>Your messages, profiles, key rings, and chat history are saved purely on your physical hardware (local storage or local application database container). This data is encrypted on-device. OnyxChat developers or servers have no access to your conversations.</p>
+
+          <h3>3. Zero Message Interception</h3>
+          <p>OnyxChat utilizes end-to-end cryptographic layers (X3DH key exchange and Double Ratchet algorithms). Messages are encrypted before leaving your device and can only be decrypted by the intended recipient. No third party (including us) can intercept or view them.</p>
+
+          <h3>4. Contact Us</h3>
+          <p>If you have any questions or feedback about our security practices, contact us at <a href="mailto:beatwave790@gmail.com" class="glow-text">beatwave790@gmail.com</a>.</p>
+        </div>
+
+        <!-- Terms of Service Pane -->
+        <div id="pane-terms" class="legal-content-pane">
+          <h2>Terms of Service</h2>
+          <p>Last updated: August 13, 2026</p>
+          <p>Please read these Terms of Service carefully before utilizing the OnyxChat application and services.</p>
+
+          <h3>1. Acceptance of Terms</h3>
+          <p>By downloading, installing, or using OnyxChat, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, you must uninstall the application immediately.</p>
+
+          <h3>2. Acceptable Use</h3>
+          <p>You agree to use OnyxChat only for lawful purposes. You must not use the application to:</p>
+          <ul>
+            <li>Engage in any form of harassment, abuse, or illegal activity.</li>
+            <li>Distribute malware, spam, or unsolicited bulk messages.</li>
+            <li>Attempt to breach the cryptographic safety or integrity of other clients.</li>
+          </ul>
+
+          <h3>3. Disclaimer of Warranties</h3>
+          <p>OnyxChat is provided "as is" and "as available", without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+
+          <h3>4. Limitation of Liability</h3>
+          <p>In no event shall the creators or contributors of OnyxChat be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising out of the use or inability to use this software.</p>
+        </div>
+
+        <!-- Copyright Pane -->
+        <div id="pane-copyright" class="legal-content-pane">
+          <h2>Copyright Notice</h2>
+          <p>Copyright &copy; 2026 BeatLabs &amp; OnyxChat Contributors. All rights reserved.</p>
+          
+          <h3>1. Open Source Licensing</h3>
+          <p>OnyxChat is an open-source software project. The source code is hosted on GitHub and is distributed under open-source software terms. Please refer to the LICENSE file in our official repository for specific permissions, restrictions, and copying rights.</p>
+
+          <h3>2. Trademarks</h3>
+          <p>The OnyxChat logo, name, and visual assets are proprietary designs belonging to BeatLabs. Unauthorized reuse of brand names or trademark duplication to build clones or deceptive applications is strictly prohibited.</p>
+
+          <h3>3. Contributions</h3>
+          <p>By contributing code, issues, or translations to the OnyxChat codebase, you grant us permission to distribute and license your work under the same open-source parameters.</p>
+        </div>
+
+        <div class="legal-meta">
+          <p>OnyxChat is built with security and integrity. Protect your private keys.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="admin.html" class="footer-brand-logo" aria-label="Admin Access">
+          <img class="footer-logo-img" src="onyx%20logo.png" alt="OnyxChat Logo">
+          <span class="footer-logo-text">OnyxChat</span>
+        </a>
+        <p class="footer-tagline">Private messaging, effortless connection.<br>An open-source chat client by BeatLabs.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="download.html" class="footer-link">Download</a></li>
+          <li><a href="developers.html" class="footer-link">Developers</a></li>
+          <li><a href="about.html" class="footer-link">About &amp; Contact</a></li>
+          <li><a href="privacy.html" class="footer-link">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul class="footer-links">
+          <li><a href="https://discord.gg/spbuDTePSR" target="_blank" rel="noopener noreferrer" class="footer-link">Discord Server</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repo</a></li>
+          <li><a href="https://github.com/beatlabs790/onyxchat/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Report Issues</a></li>
+          <li><a href="preregister.html" class="footer-link">Pre-Register</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Developer</h4>
+        <div class="footer-contact-info">
+          <p>Email: <a href="mailto:beatwave790@gmail.com">beatwave790@gmail.com</a></p>
+          <p>Website: <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">beatlabss.vercel.app</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 OnyxChat. All rights reserved.</p>
+      <p class="dev-attribution">Created by <a href="https://beatlabss.vercel.app" target="_blank" rel="noopener noreferrer">BeatLabs</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="main.js"></script>
+  <script>
+    function switchTab(tabId) {
+      // Toggle tab buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+
+      // Toggle content panes
+      document.querySelectorAll('.legal-content-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+      document.getElementById('pane-' + tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
